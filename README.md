@@ -18,7 +18,7 @@ Library.init(this)
 class User(var name: String){}
 
 RecyclerView初始化 
---- Java代码 ---
+--- Kotlin代码 ---
 recy.linear().setup { addType<User>( R.layout.item_user ) }
 
 --- recy -> RecyclerView
@@ -51,7 +51,7 @@ class User(var name: String,var type: Int = 1): Mult {
 
 }
 
---- Java代码 ---
+--- Kotlin代码 ---
 无需setup设置方法,以下只是个别方法
 recy.linear().setup { 
   empty() //添加空布局
@@ -98,7 +98,7 @@ class System(var name: String,var type: Int): Mult {
     }
 }
 
---- Java代码 ---
+--- Kotlin代码 ---
 recy.grid(spanCount = 2) // Grid布局 每行2个元素
 
 添加数据
