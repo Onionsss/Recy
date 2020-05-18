@@ -3,8 +3,6 @@
  [ ![Recy](https://img.shields.io/badge/Recy-1.0.0-orange.svg) ](https://bintray.com/zhang759308541/base/Recy/_latestVersion)
  [ ![Recy](https://img.shields.io/badge/%20Apache-2.0-blue.svg) ](https://bintray.com/zhang759308541/base/Recy/_latestVersion)
  [ ![Recy](https://img.shields.io/badge/sb-cnmlgb-ff69b4.svg) ](https://bintray.com/zhang759308541/base/Recy/_latestVersion)
- [ ![Recy](https://img.shields.io/badge/sb-cnmlgb-ff69b4.svg) ](https://bintray.com/zhang759308541/base/Recy/_latestVersion)
- [ ![Recy](https://img.shields.io/badge/sb-cnmlgb-ff69b4.svg) ](https://bintray.com/zhang759308541/base/Recy/_latestVersion)
 
 ## 依赖方式       
 ```
