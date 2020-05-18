@@ -1,11 +1,14 @@
 # Recy
 ## 更便捷的RecyclerView使用,丢弃Adapter
  [ ![Recy](https://img.shields.io/badge/Recy-1.0.0-orange.svg) ](https://bintray.com/zhang759308541/base/Recy/_latestVersion)
+## 依赖方式       
 ```
-依赖方式      
 implementation 'com.onion:Recy:1.0.0'
 ```
-
+## Application中写入
+```
+Library.init(this)
+```
 ## 基础用法1, 单类型 单布局
 ```
 实体类
@@ -100,4 +103,33 @@ recy.baseAdapter.models = arrayListOf( User(name = "Linear",type = 1), User(name
 ,System(name = "Flow",type = 1), System(name = "Iuos", type = 2) )
 
 当你添加数据时,会自动根据getMultType显示不用的布局,无需任何其他操作,如上,界面上会显示四种不同的布局
+```
+## 配合DataBinding 展示数据
+```
+1. 使用databinding:
+module下的build.gradle中android节点下加入以下代码
+dataBinding {
+   enabled = true
+}
+
+2. xml 添加layout节点
+
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    //绑定的数据
+    <data>
+        <variable
+            name="m" //必须为m
+            type="com.onion.zrecy.User" /> //绑定的实体类
+    </data>
+    // 你的布局
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="@{m.name}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</layout>
 ```
