@@ -2,7 +2,7 @@
 ## 更便捷的RecyclerView使用,丢弃Adapter
  [ ![Recy](https://img.shields.io/badge/Recy-1.0.0-orange.svg) ](https://bintray.com/zhang759308541/base/Recy/_latestVersion)
  [ ![Recy](https://img.shields.io/badge/%20Apache-2.0-blue.svg) ](https://bintray.com/zhang759308541/base/Recy/_latestVersion)
-
+ [ ![Recy](https://img.shields.io/badge/sb-cnmlgb-ff69b4.svg) ](https://bintray.com/zhang759308541/base/Recy/_latestVersion)
 ## 依赖方式       
 ```
 implementation 'com.onion:Recy:1.0.0'
@@ -28,7 +28,7 @@ recy.baseAdapter.models = arrayListOf( User(name = "Linear"), User(name = "Grid"
 增加数据
 recy.baseAdapter.addModels(arrayListOf( User(name = "State"), User(name = "Cached")))
 ```
-## 基础用法2,多布局
+## 基础用法2,多布局 
 ```
 01 - 单类型多布局
 实体类继承Mult 实现getMultType方法,返回对应的布局
