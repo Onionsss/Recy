@@ -96,7 +96,8 @@ class System(var name: String,var type: Int): Mult {
 recy.grid(spanCount = 2) // Grid布局 每行2个元素
 
 添加数据
-recy.baseAdapter.models = arrayListOf( User(name = "Linear",type = 1), User(name = "Grid", type = 2),System(name = "Flow",type = 1), System(name = "Iuos", type = 2) )
+recy.baseAdapter.models = arrayListOf( User(name = "Linear",type = 1), User(name = "Grid", type = 2)
+,System(name = "Flow",type = 1), System(name = "Iuos", type = 2) )
 
-当你添加数据时,会自动根据getMultType显示不用的布局,无需任何其他操作
+当你添加数据时,会自动根据getMultType显示不用的布局,无需任何其他操作,如上,界面上会显示四种不同的布局
 ```
