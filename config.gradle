@@ -1,0 +1,118 @@
+ext {
+
+    android = [
+            compileSdkVersion: 28,
+            buildToolsVersion: '27.0.3',
+            applicationId    : "com.chouyou.mira",
+            minSdkVersion    : 21,
+            targetSdkVersion : 27,
+            versionCode      : 20,
+            versionName      : "1.0.0"
+    ]
+
+    def dependVersion = [
+            support    : '1.0.0-beta01',
+            retrofit   : "2.3.0",
+            okhttp     : "3.11.0",
+            butterknife: "8.2.1",
+            blockcanary: "1.2.1",
+            dagger2    : "2.11",
+            leakcanary : "1.4-beta2",
+            room       : "2.1.0",
+            androidx   : "1.0.0",
+            drawerLayout   : "1.1.0-alpha03",
+            anko       : "0.10.5",
+            rxbinding3 : "3.0.0-alpha1"
+    ]
+
+    dependencies = [
+            //base
+//            "appcompat-v7"              : "com.android.support:appcompat-v7:${dependVersion.support}",
+//            "cardview-v7"               : "androidx.cardview:cardview:${dependVersion.support}",
+//            "recyclerview-v7"           : "com.android.support:recyclerview-v7:${dependVersion.support}",
+//            "design"                    : "com.android.support:design:${dependVersion.support}",
+//            "constraint"                : "com.android.support.constraint:constraint-layout:1.1.3",
+
+            //androidx
+            "appcompatx"                : "androidx.appcompat:appcompat:${dependVersion.androidx}",
+            "designx"                   : "com.google.android.material:material:${dependVersion.androidx}",
+            "recyclerviewx"             : "androidx.recyclerview:recyclerview:${dependVersion.androidx}",
+            "constraintx"               : "androidx.constraintlayout:constraintlayout:1.1.2",
+            "flexbox"                   : "com.google.android:flexbox:1.0.0",
+            "cardviewx"                 : "androidx.cardview:cardview:${dependVersion.androidx}",
+            "drawerLayout"              : "androidx.drawerlayout:drawerlayout:${dependVersion.drawerLayout}",
+            "ktx"                       : "androidx.core:core-ktx:1.0.1",
+            "anko"                      : "org.jetbrains.anko:anko:${dependVersion.anko}",
+            "anko-commons"              : "org.jetbrains.anko:anko-commons:${dependVersion.anko}",
+            "viewpager2"                : "androidx.viewpager2:viewpager2:1.0.0",
+            //   ui
+            "PhotoView"                 : "com.bm.photoview:library:1.4.1",
+            "pic_select"                 : "com.github.LuckSiege.PictureSelector:picture_library:v2.3.9", //图片选择
+            "gif"                       : "pl.droidsonroids.gif:android-gif-drawable:1.2.19",  //显示加载gif
+            "weavey-dialog"             : "com.lai.weavey:dialog:1.1",
+            "base-adapter"              : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22",
+            "wheelview"                 : "com.pl:wheelview:0.6.4",
+            "eventbus"                  : "org.greenrobot:eventbus:3.1.1",
+            "smartRefresh"              : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-3",
+            "FlycoTabLayout_Lib"        : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
+            "banner"                    : "com.youth.banner:banner:1.4.10",
+            "qmui"                      : "com.qmuiteam:qmui:1.4.0",
+            "shimmer"                   : "com.facebook.shimmer:shimmer:0.5.0", //闪光控件
+
+            "statusbar"                 : "com.jaeger.statusbarutil:library:1.5.1",
+            //rx
+            "rxjava"                    : "io.reactivex.rxjava2:rxjava:2.1.7",
+            "rxkotlin"                  : "io.reactivex.rxjava2:rxkotlin:2.2.0",
+            "rxandroid"                 : "io.reactivex.rxjava2:rxandroid:2.0.1",
+            "rxbinding"                 : "com.jakewharton.rxbinding:rxbinding:1.0.1",
+            "rxpermissions"             : "com.tbruyelle.rxpermissions2:rxpermissions:0.9.3@aar",
+            "rxlifecycle"               : "com.trello.rxlifecycle2:rxlifecycle:2.2.1",
+            "rxlifecycle-components"    : "com.trello.rxlifecycle2:rxlifecycle-components:2.2.1",
+            "rxbinding-core"            : "com.jakewharton.rxbinding3:rxbinding-core:${dependVersion.rxbinding3}",
+            "rxbinding-appcompat"       : "com.jakewharton.rxbinding3:rxbinding-appcompat:${dependVersion.rxbinding3}",
+            "rxbinding-drawerlayout"    : "com.jakewharton.rxbinding3:rxbinding-drawerlayout:${dependVersion.rxbinding3}",
+            "rxbinding-leanback"        : "com.jakewharton.rxbinding3:rxbinding-leanback:${dependVersion.rxbinding3}",
+            "rxbinding-recyclerview"    : "com.jakewharton.rxbinding3:rxbinding-recyclerview:${dependVersion.rxbinding3}",
+            "rxbinding-slidinglayout"   : "com.jakewharton.rxbinding3:rxbinding-slidingpanelayout:${dependVersion.rxbinding3}",
+            "rxbinding-swiperefresh"    : "com.jakewharton.rxbinding3:rxbinding-swiperefreshlayout:${dependVersion.rxbinding3}",
+            "rxbinding-viewpager"       : "com.jakewharton.rxbinding3:rxbinding-viewpager:${dependVersion.rxbinding3}",
+            "rxbinding-material"        : "com.jakewharton.rxbinding3:rxbinding-material:${dependVersion.rxbinding3}",
+            //network
+            "gson"                      : "com.google.code.gson:gson:2.8.0",
+            "retrofit"                  : "com.squareup.retrofit2:retrofit:${dependVersion.retrofit}",
+            "retrofit-converter-gson"   : "com.squareup.retrofit2:converter-gson:${dependVersion.retrofit}",
+            "retrofit-converter-scalars": "com.squareup.retrofit2:converter-scalars:${dependVersion.retrofit}",
+            "retrofit-adapter-rxjava2"  : "com.squareup.retrofit2:adapter-rxjava2:${dependVersion.retrofit}",
+            "okhttp"                    : "com.squareup.okhttp3:okhttp:${dependVersion.okhttp}",
+            "okhttp-logging-interceptor": "com.squareup.okhttp3:logging-interceptor:${dependVersion.okhttp}",
+            "glide"                     : "com.github.bumptech.glide:glide:4.8.0",
+            "glide-okhttp3-integration" : "com.github.bumptech.glide:okhttp3-integration:1.4.0@aar",
+            "jsoup"                     : "org.jsoup:jsoup:1.10.1",
+
+            //di
+            "dagger"                    : "com.google.dagger:dagger:${dependVersion.dagger2}",
+            "dagger-compiler"           : "com.google.dagger:dagger-compiler:${dependVersion.dagger2}",
+            "dagger-processor"          : "com.google.dagger:dagger-android-processor:${dependVersion.dagger2}",
+            "butterknife"               : "com.jakewharton:butterknife:${dependVersion.butterknife}",
+            "butterknife-compiler"      : "com.jakewharton:butterknife-compiler:${dependVersion.butterknife}",
+            "annotation"                : "org.glassfish:javax.annotation:10.0-b28",
+
+            // database
+            "room:runtime"              : "android.arch.persistence.room:runtime:${dependVersion.room}",
+            "room:compiler"             : "android.arch.persistence.room:compiler:${dependVersion.room}",
+            "room:rxjava2"              : "android.arch.persistence.room:rxjava2:${dependVersion.room}",
+            "room:ktx"                  : "androidx.room:room-ktx:${dependVersion.room}",
+
+            //other
+            "multidex"                  : "androidx.multidex:multidex:2.0.1",
+            "logger"                    : "com.orhanobut:logger:1.15",
+            "fragmentation"             : "me.yokeyword:fragmentationx:1.0.1",
+            "permission"                : "com.yanzhenjie:permission:2.0.0-rc12",
+
+            //canary
+            "blockcanary-android"       : "com.github.moduth:blockcanary-android:${dependVersion.blockcanary}",
+            "blockcanary-no-op"         : "com.github.moduth:blockcanary-no-op:${dependVersion.blockcanary}",
+            "leakcanary-android"        : "com.squareup.leakcanary:leakcanary-android:${dependVersion.leakcanary}",
+            "leakcanary-android-no-op"  : "com.squareup.leakcanary:leakcanary-android-no-op:${dependVersion.leakcanary}",
+    ]
+}
