@@ -22,11 +22,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jakewharton.rxbinding3.view.clicks
 import com.jakewharton.rxbinding3.view.longClicks
-import com.onion.baselibrary.BR
-import com.onion.baselibrary.R
+import com.onion.recy.BR
+import com.onion.recy.R
 import com.onion.recy.SizeUtils
 import com.onion.recy.bean.Mult
-import com.onion.baselibrary.recycler.animation.*
 import com.onion.recy.recycler.animation.*
 import java.util.concurrent.TimeUnit
 

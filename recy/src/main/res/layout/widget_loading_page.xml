@@ -8,7 +8,7 @@
         android:visibility="gone"
         >
 
-<!--    <com.onion.baselibrary.view.mkloader.MKLoader-->
+<!--    <com.onion.recy.view.mkloader.MKLoader-->
 <!--            android:layout_gravity="center"-->
 <!--            app:mk_color="#EB5907"-->
 <!--            app:mk_type="Whirlpool"-->

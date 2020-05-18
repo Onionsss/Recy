@@ -1,4 +1,4 @@
-package com.onion.baselibrary;
+package com.onion.recy;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.onion.baselibrary.test", appContext.getPackageName());
+        assertEquals("com.onion.recy.test", appContext.getPackageName());
     }
 }

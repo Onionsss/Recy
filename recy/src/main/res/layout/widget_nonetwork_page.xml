@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:textColor="@color/base_text_color_light"
+        android:textColor="#999999"
         />
 
     <TextView
@@ -32,7 +32,7 @@
         android:paddingLeft="18dp"
         android:paddingRight="18dp"
         android:paddingTop="6dp"
-        android:textColor="@color/base_text_color_light"
+        android:textColor="#999999"
         />
 
 

@@ -1,7 +1,7 @@
 
 package com.onion.recy.base
 import android.app.Application
-import com.onion.baselibrary.BR
+import com.onion.recy.BR
 import com.onion.recy.base.Library.app
 import com.onion.recy.recycler.BaseRecyclerAdapter
 
