@@ -3,6 +3,9 @@
  [ ![Recy](https://img.shields.io/badge/Recy-1.0.0-orange.svg) ](https://bintray.com/zhang759308541/base/Recy/_latestVersion)
  [ ![Recy](https://img.shields.io/badge/%20Apache-2.0-blue.svg) ](https://bintray.com/zhang759308541/base/Recy/_latestVersion)
  [ ![Recy](https://img.shields.io/badge/sb-cnmlgb-ff69b4.svg) ](https://bintray.com/zhang759308541/base/Recy/_latestVersion)
+ [ ![Recy](https://img.shields.io/badge/sb-cnmlgb-ff69b4.svg) ](https://bintray.com/zhang759308541/base/Recy/_latestVersion)
+ [ ![Recy](https://img.shields.io/badge/sb-cnmlgb-ff69b4.svg) ](https://bintray.com/zhang759308541/base/Recy/_latestVersion)
+
 ## 依赖方式       
 ```
 implementation 'com.onion:Recy:1.0.0'
@@ -52,7 +55,7 @@ class User(var name: String,var type: Int = 1): Mult {
 
 --- Java代码 ---
 无需setup设置方法,以下只是个别方法
-recy.linear().setup {
+recy.linear().setup { 
   empty() //添加空布局
   enableMult() //使用mult多布局, 可不写,默认true
 }
