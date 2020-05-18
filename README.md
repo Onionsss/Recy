@@ -49,7 +49,7 @@ class User(var name: String,var type: Int = 1): Mult {
 }
 
 --- Java代码 ---
-无需SetUp设置方法,以下只是个别方法
+无需setup设置方法,以下只是个别方法
 recy.linear().setup {
   empty() //添加空布局
   enableMult() //使用mult多布局, 可不写,默认true
@@ -210,4 +210,24 @@ recy.linear()
                 removeHeader(TextView(this))
                 removeFooter(TextView(this))
             }
+```
+## 点击事件,长按事件
+```
+直接注册,单布局和多布局都是一样,不注册是无法触发点击事件的
+1.单击事件注册: 
+recy.baseAdapter.onClick(R.id.item_root,R.id.item_root2){
+            when(it){
+                R.id.item_root -> {
+                    val model = getModel<User>()  //拿到model
+                    val binding = getViewDataBinding<ItemUserBinding>() //拿到当前user布局
+                }
+                R.id.item_root2 -> {
+                    
+                }
+            }
+        }
+        
+2.长按事件注册:
+recy.baseAdapter.onLongClick()
+recy.baseAdapter.addFastClickable(R.id.xxx) //500ms内在此点击无效
 ```
