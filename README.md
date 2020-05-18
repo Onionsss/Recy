@@ -1,6 +1,8 @@
 # Recy
 ## 更便捷的RecyclerView使用,丢弃Adapter
  [ ![Recy](https://img.shields.io/badge/Recy-1.0.0-orange.svg) ](https://bintray.com/zhang759308541/base/Recy/_latestVersion)
+ [ ![Apache](https://img.shields.io/badge/%20Apache-2.0-blue.svg) ]
+
 ## 依赖方式       
 ```
 implementation 'com.onion:Recy:1.0.0'
