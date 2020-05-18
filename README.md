@@ -163,12 +163,51 @@ class User(var name: String,var type: Int = 1): Mult {
 ```
 ## 配合onBind函数使用
 ```
+当xml绑定不满足我们的使用需求时,我们也可以像adapter一样直接执行onBind事件
+当初始化RecyclerView时 绑定onBind,如下:
+如果是单布局
 recy.grid(spanCount = 1)
             .setup {
                 addType<User> { R.layout.item_user }
                 empty()
             }.onBind {
                 // todo
+                val model = getModel<User>()  //拿到model
+                val binding = getViewDataBinding<ItemUserBinding>() //拿到当前布局
+                adapterPosition //当前position 如果使用了header和footer 请使用modelPosition
+                modelPosition //当前position 去除了header和footer
+                // xxxx代码
                 false
+            }
+            
+如果是多布局,请直接使用当前布局id判断,如下:
+recy.linear(orientation = LinearLayout.HORIZONTAL)
+            .setup {
+                addType<User>( R.layout.item_user)
+                addType<System>( R.layout.item_system1)
+            }.onBind {
+                // itemViewType就是布局id
+                when(itemViewType){
+                    R.layout.item_user -> {
+                        val model = getModel<User>()  //拿到model
+                        val binding = getViewDataBinding<ItemUserBinding>() //拿到当前user布局
+                    }
+
+                    R.layout.item_system1 -> {
+                        val model = getModel<System>()  //拿到model
+                        val binding = getViewDataBinding<ItemSystem1Binding>() //拿到当前system布局
+                    }
+                }
+                false
+            }
+```
+## Header和Footer
+```
+recy.linear()
+            .setup {
+                addHeader(TextView(this))
+                addFooter(TextView(this))
+                removeHeader(TextView(this))
+                removeFooter(TextView(this))
             }
 ```
