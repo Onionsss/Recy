@@ -106,30 +106,69 @@ recy.baseAdapter.models = arrayListOf( User(name = "Linear",type = 1), User(name
 ```
 ## 配合DataBinding 展示数据
 ```
+以下简单Databinding使用,更多用法参考官方文档
 1. 使用databinding:
 module下的build.gradle中android节点下加入以下代码
 dataBinding {
    enabled = true
 }
+2.实体类
+class User(var name: String,var type: Int = 1): Mult {
 
-2. xml 添加layout节点
+    override fun getMultType(): Int {
+        when(type){
+            1 -> {
+                return R.layout.item_user
+            }
 
+            2 -> {
+                return R.layout.item_user2
+            }
+        }
+        return R.layout.item_system2
+    }
+
+    val xName: String? get() {
+        return "我的名字是: ${name}"
+    }
+}
+
+3. xml 添加layout节点
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     //绑定的数据
     <data>
+    //必须为m
+    //绑定的实体类
         <variable
-            name="m" //必须为m
-            type="com.onion.zrecy.User" /> //绑定的实体类
+            name="m" 
+            type="com.onion.zrecy.User" /> 
     </data>
     // 你的布局
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        //该TextView即可显示name
         <TextView
             android:text="@{m.name}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+         // 使用自定义属性
+         <TextView
+            android:text="@{m.xName}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </layout>
+```
+## 配合onBind函数使用
+```
+recy.grid(spanCount = 1)
+            .setup {
+                addType<User> { R.layout.item_user }
+                empty()
+            }.onBind {
+                // todo
+                false
+            }
 ```
