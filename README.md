@@ -115,7 +115,7 @@ dataBinding {
    enabled = true
 }
 2.实体类
-class User(var name: String,var type: Int = 1): Mult {
+class User(var name: String,var type: Int = 1): Mult { 
 
     override fun getMultType(): Int {
         when(type){
