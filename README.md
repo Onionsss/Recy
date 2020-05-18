@@ -13,10 +13,14 @@ implementation 'com.onion:Recy:1.0.0'
 class User(var name: String){}
 
 RecyclerView初始化 
-recy -> RecyclerView
-linear -> 使用LinearLayoutManager,默认Vertical
+
 recy.linear().setup { addType<User>( R.layout.item_user ) }
 
-添加数据
+--- recy -> RecyclerView
+--- linear -> 使用LinearLayoutManager,默认Vertical
+
+新数据
 recy.baseAdapter.models = arrayListOf( User(name = "Linear"), User(name = "Grid"))
+增加数据
+recy.baseAdapter.addModels(arrayListOf( User(name = "State"), User(name = "Cached")))
 ```
