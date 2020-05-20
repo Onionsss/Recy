@@ -54,6 +54,7 @@ class Mult2Activity: AppCompatActivity() {
             Log.d("TAG","${oldPosition}")
             Log.d("TAG","${user.name}")
         }
+
     }
 
 }

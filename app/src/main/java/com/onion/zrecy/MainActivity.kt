@@ -13,10 +13,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_o)
 
         Library.init(this.application)
-
+        val intent = Intent(this,NormalActivity::class.java)
+        startActivity(intent)
         normal.setOnClickListener {
-            val intent = Intent(this,NormalActivity::class.java)
-            startActivity(intent)
+
         }
 
         mult.setOnClickListener {

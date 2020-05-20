@@ -10,6 +10,7 @@ import com.onion.recy.bean.Mult
  * Description:
  */
 class User(var name: String,var type: Int = 1): Mult {
+
     override fun getMultType(): Int {
         when(type){
             1 -> {
@@ -23,4 +24,7 @@ class User(var name: String,var type: Int = 1): Mult {
         return R.layout.item_system2
     }
 
+    val xName: String? get() {
+        return "我的名字是: ${name}"
+    }
 }
