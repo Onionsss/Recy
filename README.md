@@ -117,6 +117,7 @@ recy.grid(spanCount = 1)
 //当没有数据时,传入一个空布局数据,有且只有一个元素
 recy.baseAdapter.models = arrayListOf( SonEmpty(vTips = "没有数据"))
 ```
+# 接入配置!!!
 ## Application中写入
 ```
 Library.init(this)
