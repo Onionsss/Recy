@@ -5,7 +5,7 @@
     <data>
         <variable
                 name="m"
-                type="com.onion.recy.recycler.BaseRecyclerAdapter.AdapterEmpty"/>
+                type="com.onion.zrecy.SonEmpty"/>
     </data>
     <LinearLayout
         android:id="@+id/recy_empty_root"
@@ -15,19 +15,18 @@
             android:layout_height="match_parent"
             android:gravity="center"
         android:clickable="true"
-            android:background="#1b1b27"
+            android:background="#ff00ff"
             android:orientation="vertical"
             android:visibility="visible">
 
         <ImageView
-                app:res="@{m.img}"
                 android:id="@+id/empty_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 />
 
         <TextView
-                android:text="@{m.text}"
+                android:text="@{m.tv}"
                 android:id="@+id/empty_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

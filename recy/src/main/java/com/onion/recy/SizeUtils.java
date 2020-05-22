@@ -114,7 +114,7 @@ public final class SizeUtils {
 
     /**
      * Force convert the size of view.
-     * <p>e.g.</p>
+     * <p>empty.g.</p>
      * <pre>
      * SizeUtils.forceGetViewSize(view, new SizeUtils.onGetSizeListener() {
      *     Override

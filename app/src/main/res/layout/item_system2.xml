@@ -3,7 +3,7 @@
     <data>
         <variable
             name="m"
-            type="com.onion.zrecy.System" />
+            type="com.onion.zrecy.System1" />
     </data>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal" android:layout_width="match_parent"

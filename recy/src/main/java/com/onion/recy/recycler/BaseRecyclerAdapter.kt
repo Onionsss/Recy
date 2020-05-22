@@ -1,5 +1,3 @@
-
-
 package com.onion.recy.recycler
 
 
@@ -25,7 +23,9 @@ import com.jakewharton.rxbinding3.view.longClicks
 import com.onion.recy.BR
 import com.onion.recy.R
 import com.onion.recy.SizeUtils
+import com.onion.recy.bean.Empty
 import com.onion.recy.bean.Mult
+import com.onion.recy.databinding.RecyEmptyPageBinding
 import com.onion.recy.recycler.animation.*
 import java.util.concurrent.TimeUnit
 
@@ -42,23 +42,26 @@ import java.util.concurrent.TimeUnit
  */
 
 @Suppress("UNCHECKED_CAST")
-class BaseRecyclerAdapter(recyclerView: RecyclerView) : RecyclerView.Adapter<BaseRecyclerAdapter.BaseViewHolder>() {
+class BaseRecyclerAdapter(recyclerView: RecyclerView) :
+    RecyclerView.Adapter<BaseRecyclerAdapter.BaseViewHolder>() {
     /**
      * -------------------------新代码
      */
-    data class AdapterEmpty(var id: Int): BaseObservable(){
+    data class AdapterEmpty(var id: Int) : BaseObservable() {
         @Bindable
         var bg: Int = 0
-        set(value) {
-            field = value
-            notifyPropertyChanged(BR.bg)
-        }
+            set(value) {
+                field = value
+                notifyPropertyChanged(BR.bg)
+            }
+
         @Bindable
         var img: Int = 0
             set(value) {
                 field = value
                 notifyPropertyChanged(BR.img)
             }
+
         @Bindable
         var text: String = ""
             set(value) {
@@ -67,30 +70,42 @@ class BaseRecyclerAdapter(recyclerView: RecyclerView) : RecyclerView.Adapter<Bas
             }
     }
 
-    private var emptyList: ArrayList<AdapterEmpty> = arrayListOf()
+    var emptyList: ArrayList<Any> = arrayListOf()
 
-    lateinit var e: AdapterEmpty
+    lateinit var empty: AdapterEmpty
 
-    fun empty(bg: Int = Color.WHITE,img: Int = R.mipmap.list_empty,text: String = "None",layout:Int = R.layout.recy_empty_page): BaseRecyclerAdapter {
-        e = AdapterEmpty(0)
-        e.bg = bg
-        e.img = img
-        e.text = text
+    init {
+        empty = AdapterEmpty(0)
+    }
+
+    /**
+     * 自带的空布局
+     */
+    fun empty(
+        bg: Int = Color.WHITE,
+        img: Int = R.mipmap.list_empty,
+        text: String = "None",
+        layout: Int = R.layout.recy_empty_page
+    ): BaseRecyclerAdapter {
+        empty = AdapterEmpty(10)
+        empty.bg = bg
+        empty.img = img
+        empty.text = text
 
         addEmpty(layout)
         return this
     }
 
-    fun upgrade(bg: Int = Color.WHITE,img: Int = R.mipmap.list_empty,text: String = "None"){
-        e.bg = bg
-        e.img = img
-        e.text = text
+    inline fun <reified E : Any> customEmpty(cEmpty: E, layout: Int) {
+        addType<E>(layout)
+        emptyList.clear()
+        emptyList.add(cEmpty)
     }
 
-    private fun addEmpty(layout: Int){
+    private fun addEmpty(layout: Int) {
         addType<AdapterEmpty> { layout }
         emptyList.clear()
-        emptyList.add(e)
+        emptyList.add(empty)
     }
 
     private var mRecyclerview = recyclerView
@@ -106,12 +121,12 @@ class BaseRecyclerAdapter(recyclerView: RecyclerView) : RecyclerView.Adapter<Bas
         return this
     }
 
-    fun remove(pos: Int){
+    fun remove(pos: Int) {
         (models as ArrayList).remove(pos)
         notifyItemChanged(pos)
     }
 
-    fun remove(model: Any){
+    fun remove(model: Any) {
         (models as ArrayList).remove(model)
         notifyDataSetChanged()
     }
@@ -129,12 +144,12 @@ class BaseRecyclerAdapter(recyclerView: RecyclerView) : RecyclerView.Adapter<Bas
         set(value) {
             field = value
 
-            if(models.isNullOrEmpty()){
-                if(!emptyList.isNullOrEmpty()){
+            if (models.isNullOrEmpty()) {
+                if (!emptyList.isNullOrEmpty()) {
                     models = emptyList
                     mRecyclerview.layoutManager = LinearLayoutManager(mRecyclerview.context)
                 }
-            }else{
+            } else {
                 mRecyclerview.layoutManager = mManager
             }
 
@@ -202,6 +217,8 @@ class BaseRecyclerAdapter(recyclerView: RecyclerView) : RecyclerView.Adapter<Bas
 
     // listener
     private var onBind: (BaseViewHolder.() -> Boolean)? = null
+    private var onEmpty: (BaseViewHolder.() -> Unit)? = null
+    private var onReload: (BaseViewHolder.() -> Unit)? = null
     private var onPayload: (BaseViewHolder.(Any) -> Unit)? = null
     private var onClick: (BaseViewHolder.(Int) -> Unit)? = null
     private var onLongClick: (BaseViewHolder.(Int) -> Unit)? = null
@@ -211,6 +228,16 @@ class BaseRecyclerAdapter(recyclerView: RecyclerView) : RecyclerView.Adapter<Bas
 
     fun onBind(block: BaseViewHolder.() -> Boolean): BaseRecyclerAdapter {
         onBind = block
+        return this
+    }
+
+    fun onEmpty(block: BaseViewHolder.() -> Unit): BaseRecyclerAdapter {
+        onEmpty = block
+        return this
+    }
+
+    fun onReload(block: BaseViewHolder.() -> Unit): BaseRecyclerAdapter {
+        onReload = block
         return this
     }
 
@@ -226,7 +253,10 @@ class BaseRecyclerAdapter(recyclerView: RecyclerView) : RecyclerView.Adapter<Bas
         return this
     }
 
-    fun onLongClick(@IdRes vararg id: Int, block: BaseViewHolder.(Int) -> Unit): BaseRecyclerAdapter {
+    fun onLongClick(
+        @IdRes vararg id: Int,
+        block: BaseViewHolder.(Int) -> Unit
+    ): BaseRecyclerAdapter {
         for (i in id) {
             longClickableIds.add(i)
         }
@@ -301,12 +331,12 @@ class BaseRecyclerAdapter(recyclerView: RecyclerView) : RecyclerView.Adapter<Bas
 
         val manager = recyclerView.layoutManager
 
-        if(manager is GridLayoutManager){
+        if (manager is GridLayoutManager) {
             manager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int {
-                    if(isFooter(position) || isHeader(position)){
+                    if (isFooter(position) || isHeader(position)) {
                         return manager.spanCount
-                    }else{
+                    } else {
                         return 1
                     }
                 }
@@ -333,9 +363,10 @@ class BaseRecyclerAdapter(recyclerView: RecyclerView) : RecyclerView.Adapter<Bas
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         if (isModel(position)) {
             // 给第一个条目加marginTop
-            if(enableMargin){
+            if (enableMargin) {
                 val params = holder.itemView.layoutParams as ViewGroup.MarginLayoutParams
-                params.topMargin = if (position == 0) SizeUtils.dp2px(marginTop) else SizeUtils.dp2px(0F)
+                params.topMargin =
+                    if (position == 0) SizeUtils.dp2px(marginTop) else SizeUtils.dp2px(0F)
                 holder.itemView.layoutParams = params
             }
 
@@ -364,7 +395,7 @@ class BaseRecyclerAdapter(recyclerView: RecyclerView) : RecyclerView.Adapter<Bas
 
                 val model = getModel<Any>(position)
 
-                if(mEnableMult && model is Mult){
+                if (mEnableMult && model is Mult) {
                     return model.getMultType()
                 }
 
@@ -501,6 +532,7 @@ class BaseRecyclerAdapter(recyclerView: RecyclerView) : RecyclerView.Adapter<Bas
             else -> models?.let { it[position - headerCount] as M }
         }
     }
+
     /**
      * adapter position  convert to  model position
      * @param position Int adapter position or layout position
@@ -672,9 +704,10 @@ class BaseRecyclerAdapter(recyclerView: RecyclerView) : RecyclerView.Adapter<Bas
         private lateinit var viewDataBinding: ViewDataBinding
         private lateinit var model: Any
         val adapter: BaseRecyclerAdapter = this@BaseRecyclerAdapter
-        val modelPosition: Int get() {
-            return adapterPosition - headerCount
-        }
+        val modelPosition: Int
+            get() {
+                return adapterPosition - headerCount
+            }
 
         constructor(itemView: View) : super(itemView)
 
@@ -701,14 +734,28 @@ class BaseRecyclerAdapter(recyclerView: RecyclerView) : RecyclerView.Adapter<Bas
 
         fun bind(model: Any) {
             this.model = model
-            if(model !is AdapterEmpty){
-                onBind?.apply {
-                    val isReturn = onBind!!.invoke(this@BaseViewHolder)
-                    if (isReturn) return
+            when (model) {
+                is AdapterEmpty -> {
+                    //默认空布局
+                    val binding = getViewDataBinding<RecyEmptyPageBinding>()
+                    binding.recyEmptyRoot.setOnClickListener {
+                        onReload?.apply { onReload!!.invoke(this@BaseViewHolder) }
+                    }
                 }
-            }else{
-
+                is Empty -> {
+                    //自定义空
+                    onEmpty?.apply {
+                        onEmpty!!.invoke(this@BaseViewHolder)
+                    }
+                }
+                else -> {
+                    onBind?.apply {
+                        val isReturn = onBind!!.invoke(this@BaseViewHolder)
+                        if (isReturn) return
+                    }
+                }
             }
+
             viewDataBinding.setVariable(dataBindingModelId, model)
             viewDataBinding.executePendingBindings()
         }

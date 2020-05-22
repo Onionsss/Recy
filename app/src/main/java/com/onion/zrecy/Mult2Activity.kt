@@ -30,8 +30,8 @@ class Mult2Activity: AppCompatActivity() {
 
         recy.baseAdapter.models = arrayListOf(
             User(name = "zhangqi",type = 1),
-            System(name = "zhangqi",type = 1),
-            System(name = "zhangqi",type = 2),
+            System1(name = "zhangqi",type = 1),
+            System1(name = "zhangqi",type = 2),
             User(name = "zhangqi",type = 2),
             User(name = "zhangqi"),
             User(name = "zhangqi")

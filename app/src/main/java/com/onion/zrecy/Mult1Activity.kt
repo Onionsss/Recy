@@ -30,11 +30,11 @@ class Mult1Activity: AppCompatActivity() {
             }
 
         recy.baseAdapter.models = arrayListOf(
-            System("haha", 1),
-            System("haha", 2),
-            System("haha", 1),
-            System("haha", 1),
-            System("haha", 2)
+            System1("haha", 1),
+            System1("haha", 2),
+            System1("haha", 1),
+            System1("haha", 1),
+            System1("haha", 2)
         )
 
         recy.baseAdapter.models = arrayListOf()

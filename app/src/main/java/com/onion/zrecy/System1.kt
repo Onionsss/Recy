@@ -4,12 +4,12 @@ import com.onion.recy.bean.Mult
 
 /**
  * Copyright (C), 2019-2020, 里德软件
- * FileName: System
+ * FileName: System1
  * Author: OnionMac by 张琦
  * Date: 2020-04-27 15:35
  * Description:
  */
-class System(var name: String,var type: Int): Mult {
+class System1(var name: String, var type: Int): Mult {
 
     override fun getMultType(): Int {
         when(type){
