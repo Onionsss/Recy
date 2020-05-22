@@ -9,9 +9,9 @@
 implementation 'com.onion:Recy:1.0.1'
 ```
 ## 1.0.1版本更新日志
-```
-增加空布局配置,和自定义空布局
+### 增加空布局配置,和自定义空布局
 
+```
 01 - 空布局,无数据展示页面,onReload为点击了系统空布局页面做出的操作
 recy.grid(spanCount = 1)
             .setup {
@@ -92,7 +92,8 @@ xml代码:
             android:textSize="14sp" />
     </LinearLayout>
 </layout>
-同样,可以动态的更新empty
+
+同样,我们可以动态的更新empty
 empty.tips = "我更新了 没有数据!"
 ```
 ## Application中写入
