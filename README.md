@@ -95,6 +95,24 @@ xml代码:
 
 同样,我们可以动态的更新empty
 empty.tips = "我更新了 没有数据!"
+
+03 - 自定义type作为空布局
+该方法比较麻烦,参考多布局
+recy.grid(spanCount = 1)
+            .setup {
+                addType<User> { R.layout.item_user }
+                addType<SonEmpty> { R.layout.recy_empty_page1 }
+            }.onBind {
+
+                when(itemViewType){
+                    R.layout.recy_empty_page1 -> {
+                        //TODO
+                    }
+                }
+                false
+            }
+
+        recy.baseAdapter.models = arrayListOf( SonEmpty(vTips = "没有数据"))
 ```
 ## Application中写入
 ```
