@@ -105,16 +105,17 @@ recy.grid(spanCount = 1)
                 addType<User> { R.layout.item_user }
                 addType<SonEmpty> { R.layout.recy_empty_page1 }
             }.onBind {
-
                 when(itemViewType){
+                    //对空布局做操作
                     R.layout.recy_empty_page1 -> {
                         //TODO
                     }
                 }
                 false
             }
-
-        recy.baseAdapter.models = arrayListOf( SonEmpty(vTips = "没有数据"))
+            
+//当没有数据时,传入一个空布局数据,有且只有一个元素
+recy.baseAdapter.models = arrayListOf( SonEmpty(vTips = "没有数据"))
 ```
 ## Application中写入
 ```
