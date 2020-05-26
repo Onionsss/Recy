@@ -1,41 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
-                name="m"
-                type="com.onion.zrecy.SonEmpty"/>
+            name="m"
+            type="com.onion.zrecy.SonEmpty" />
     </data>
+
     <LinearLayout
         android:id="@+id/recy_empty_root"
-            android:paddingTop="50dp"
-            android:paddingBottom="50dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-        android:clickable="true"
-            android:background="#ff00ff"
-            android:orientation="vertical"
-            android:visibility="visible">
-
-        <ImageView
-                android:id="@+id/empty_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ff00ff"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="50dp"
+        android:paddingBottom="50dp"
+        android:visibility="visible">
 
         <TextView
-                android:text="@{m.tv}"
-                android:id="@+id/empty_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textSize="14sp"
-                android:gravity="center"
-                android:textColor="#ffffff"
-                />
-
-
+            android:id="@+id/empty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@{m.tips}"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
     </LinearLayout>
 </layout>

@@ -3,6 +3,7 @@ package com.onion.zrecy
 import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.onion.recy.recycler.baseAdapter
 import com.onion.recy.recycler.linear
 import com.onion.recy.recycler.setup
@@ -21,9 +22,10 @@ class Mult1Activity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recy.linear(orientation = LinearLayout.HORIZONTAL)
+        recy.linear(orientation = RecyclerView.VERTICAL)
             .setup {
                 empty()
+                addType<User>( R.layout.activity_main)
             }.onBind {
                 // todo
                 false
@@ -34,7 +36,8 @@ class Mult1Activity: AppCompatActivity() {
             System1("haha", 2),
             System1("haha", 1),
             System1("haha", 1),
-            System1("haha", 2)
+            System1("haha", 2),
+            System1("hehe",123)
         )
 
         recy.baseAdapter.models = arrayListOf()

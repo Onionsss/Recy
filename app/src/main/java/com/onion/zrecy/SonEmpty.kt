@@ -13,13 +13,13 @@ import com.onion.recy.recycler.BaseRecyclerAdapter
  * Date: 2020-05-20 16:18
  * Description:
  */
-data class SonEmpty(var tvT: String): BaseObservable(),Empty{
+data class SonEmpty(var vTips: String): BaseObservable(),Empty{
 
     @Bindable
-    var tv: String = tvT
+    var tips: String = vTips
         set(value) {
             field = value
-            notifyPropertyChanged(BR.tv)
+            notifyPropertyChanged(BR.tips)
         }
 
 }
