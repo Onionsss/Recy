@@ -6,8 +6,118 @@
 
 ## 依赖方式       
 ```
-implementation 'com.onion:Recy:1.0.0'
+implementation 'com.onion:Recy:1.0.1'
 ```
+## 1.0.1版本更新日志
+### 增加空布局配置,和自定义空布局
+#### 01 - 空布局,无数据展示页面,onReload为点击了系统空布局页面做出的操作
+
+```
+recy.grid(spanCount = 1)
+            .setup {
+                addType<User> { R.layout.item_user }
+                empty() //添加空布局
+            }.onReload {
+                //TODO 当点击当前系统默认空页面进行的逻辑
+                // 比如加载数据
+            }
+            
+当recy.baseAdapter.models = arrayListOf()时,加载空数据时会自动显示系统的空页面
+
+01.1 - 初始化时修改系统空界面某些配置
+empty(bg = Color.BLACK,img = R.mipmap.empty,text = "暂无数据") //添加空布局,修改配置
+
+01.2 动态修改空布局配置
+recy.baseAdapter.empty.text = "数据为空!"  //修改文字
+recy.baseAdapter.empty.bg = Color.BLUE   //修改背景颜色
+recy.baseAdapter.empty. = R.mipmap.empty_02 //修改图片
+```
+#### 02 - 自定义空布局
+```
+当框架自带的空布局无法满足时,用户可以自定义空布局
+02.1 定义空布局数据类,实现Empty接口,继承BaseObservable接口,为了动态更新,如不需要则不需要继承如下:
+data class SonEmpty(var vTips: String): BaseObservable(),Empty{
+
+    @Bindable
+    var tips: String = vTips
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.tips)
+        }
+
+}
+创建sonEmpty类
+val empty = SonEmpty("没有数据")
+使用customEmpty方法 如下:
+recy.grid(spanCount = 1)
+            .setup {
+                addType<User> { R.layout.item_user }
+                customEmpty<SonEmpty>(empty,R.layout.recy_empty_page1) //自定义空布局,传入数据类和布局
+            }.onBind {
+                false
+            }.onEmpty {
+              //在此能对自定义空布局进行操作
+            }
+xml代码: 
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="m"
+            type="com.onion.zrecy.SonEmpty" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/recy_empty_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ff00ff"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="50dp"
+        android:paddingBottom="50dp"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/empty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@{m.tips}"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+    </LinearLayout>
+</layout>
+
+同样,我们可以动态的更新empty
+empty.tips = "我更新了 没有数据!"
+```
+03 - 自定义type作为空布局
+```
+该方法比较麻烦,参考多布局
+recy.grid(spanCount = 1)
+            .setup {
+                addType<User> { R.layout.item_user }
+                addType<SonEmpty> { R.layout.recy_empty_page1 }
+            }.onBind {
+                when(itemViewType){
+                    //对空布局做操作
+                    R.layout.recy_empty_page1 -> {
+                        //TODO
+                    }
+                }
+                false
+            }
+            
+//当没有数据时,传入一个空布局数据,有且只有一个元素
+recy.baseAdapter.models = arrayListOf( SonEmpty(vTips = "没有数据"))
+```
+# 接入配置!!!
 ## Application中写入
 ```
 Library.init(this)
