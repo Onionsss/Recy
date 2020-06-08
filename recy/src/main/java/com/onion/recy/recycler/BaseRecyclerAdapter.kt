@@ -23,6 +23,7 @@ import com.jakewharton.rxbinding3.view.longClicks
 import com.onion.recy.BR
 import com.onion.recy.R
 import com.onion.recy.SizeUtils
+import com.onion.recy.bean.AdapterEmpty
 import com.onion.recy.bean.Empty
 import com.onion.recy.bean.Mult
 import com.onion.recy.databinding.RecyEmptyPageBinding
@@ -44,56 +45,17 @@ import java.util.concurrent.TimeUnit
 @Suppress("UNCHECKED_CAST")
 class BaseRecyclerAdapter(recyclerView: RecyclerView) :
     RecyclerView.Adapter<BaseRecyclerAdapter.BaseViewHolder>() {
+
+
     /**
      * -------------------------新代码
      */
-    data class AdapterEmpty(var id: Int) : BaseObservable() {
-        @Bindable
-        var bg: Int = 0
-            set(value) {
-                field = value
-                notifyPropertyChanged(BR.bg)
-            }
-
-        @Bindable
-        var img: Int = 0
-            set(value) {
-                field = value
-                notifyPropertyChanged(BR.img)
-            }
-
-        @Bindable
-        var text: String = ""
-            set(value) {
-                field = value
-                notifyPropertyChanged(BR.text)
-            }
-    }
 
     var emptyList: ArrayList<Any> = arrayListOf()
 
-    lateinit var empty: AdapterEmpty
 
     init {
-        empty = AdapterEmpty(0)
-    }
 
-    /**
-     * 自带的空布局
-     */
-    fun empty(
-        bg: Int = Color.WHITE,
-        img: Int = R.mipmap.list_empty,
-        text: String = "None",
-        layout: Int = R.layout.recy_empty_page
-    ): BaseRecyclerAdapter {
-        empty = AdapterEmpty(10)
-        empty.bg = bg
-        empty.img = img
-        empty.text = text
-
-        addEmpty(layout)
-        return this
     }
 
     inline fun <reified E : Any> customEmpty(cEmpty: E, layout: Int) {
@@ -102,10 +64,10 @@ class BaseRecyclerAdapter(recyclerView: RecyclerView) :
         emptyList.add(cEmpty)
     }
 
-    private fun addEmpty(layout: Int) {
-        addType<AdapterEmpty> { layout }
+    fun addEmpty(adapterEmpty: AdapterEmpty? = BaseRecyclerAdapter.sAdapterEmpty) {
+        addType<AdapterEmpty> { adapterEmpty?.layout!! }
         emptyList.clear()
-        emptyList.add(empty)
+        emptyList.add(adapterEmpty!!)
     }
 
     private var mRecyclerview = recyclerView
@@ -779,12 +741,21 @@ class BaseRecyclerAdapter(recyclerView: RecyclerView) :
         private var dataBindingModelId: Int = -1
 
         /**
+         * 默认的
+         */
+        private var sAdapterEmpty: AdapterEmpty? = AdapterEmpty()
+        /**
          * 初始化
          * @param model Model id
          */
         @JvmStatic
         fun setConfig(model: Int) {
             dataBindingModelId = model
+        }
+
+        @JvmStatic
+        fun setDefaultEmpty(empty: AdapterEmpty){
+            sAdapterEmpty = empty
         }
     }
 }

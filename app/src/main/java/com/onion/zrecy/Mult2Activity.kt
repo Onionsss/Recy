@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.onion.recy.bean.AdapterEmpty
 import com.onion.recy.recycler.baseAdapter
 import com.onion.recy.recycler.linear
 import com.onion.recy.recycler.setup
@@ -26,34 +27,12 @@ class Mult2Activity: AppCompatActivity() {
 
         recy.linear()
             .setup {  }
-            .empty()
-
+            .addEmpty(AdapterEmpty(xText = "哈哈"))
         recy.baseAdapter.models = arrayListOf(
-            User(name = "zhangqi",type = 1),
-            System1(name = "zhangqi",type = 1),
-            System1(name = "zhangqi",type = 2),
-            User(name = "zhangqi",type = 2),
-            User(name = "zhangqi"),
-            User(name = "zhangqi")
+
         )
 
-        val tv = TextView(this)
-        val tv2 = TextView(this)
-        val tv3 = TextView(this)
-        tv.text = "123"
-        tv2.text = "456"
-        tv3.text = "ad"
-        recy.baseAdapter.addHeader(tv)
-        recy.baseAdapter.addHeader(tv2)
-        recy.baseAdapter.addFooter(tv3)
-        recy.baseAdapter.onClick(R.id.item_root){
-            val user = getModel<User>()
-            Log.d("TAG","${modelPosition}")
-            Log.d("TAG","${adapterPosition}")
-            Log.d("TAG","${layoutPosition}")
-            Log.d("TAG","${oldPosition}")
-            Log.d("TAG","${user.name}")
-        }
+
 
     }
 
