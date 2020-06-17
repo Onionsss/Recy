@@ -13,7 +13,7 @@ import com.onion.recy.R
  * Date: 2020/5/26 17:20
  * Description:
  */
-data class AdapterEmpty(var xBg: Int = Color.BLACK,var xImg: Int = R.mipmap.list_empty,
+data class AdapterEmpty(var xBg: Int = Color.WHITE,var xImg: Int = R.mipmap.list_empty,
                         var xText: String? = "None",var layout: Int = R.layout.recy_empty_page) : BaseObservable() {
 
     @Bindable
