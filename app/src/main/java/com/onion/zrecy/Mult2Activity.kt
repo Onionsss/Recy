@@ -1,8 +1,10 @@
 package com.onion.zrecy
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import com.onion.recy.bean.AdapterEmpty
 import com.onion.recy.recycler.baseAdapter
@@ -27,7 +29,8 @@ class Mult2Activity: AppCompatActivity() {
 
         recy.linear()
             .setup {
-                addEmpty()
+                addType<User> { R.layout.item_user }
+                addEmpty(adapterEmpty = AdapterEmpty(xText = "草",xBg = Color.BLACK))
             }
         recy.baseAdapter.models = arrayListOf()
 

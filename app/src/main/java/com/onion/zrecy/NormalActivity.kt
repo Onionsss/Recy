@@ -20,11 +20,11 @@ class NormalActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val empty = SonEmpty("没有数据")
+        val empty = SonEmpty("没有数据12")
         recy.grid(spanCount = 1)
             .setup {
                 addType<User> { R.layout.item_user }
-                addType<SonEmpty> { R.layout.recy_empty_page1 }
+                customEmpty(empty)
             }.onBind {
 
                 when(itemViewType){
@@ -35,7 +35,7 @@ class NormalActivity: AppCompatActivity() {
                 false
             }
 
-        recy.baseAdapter.models = arrayListOf( SonEmpty(vTips = "没有数据"))
+        recy.baseAdapter.models = arrayListOf()
     }
 
 }

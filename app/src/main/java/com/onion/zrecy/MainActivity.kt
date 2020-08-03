@@ -1,6 +1,7 @@
 package com.onion.zrecy
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.onion.recy.base.Library
@@ -15,11 +16,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_o)
 
         Library.init(this.application)
-        BaseRecyclerAdapter.setDefaultEmpty(AdapterEmpty(xText = "呵呵"))
-        val intent = Intent(this,Mult2Activity::class.java)
-        startActivity(intent)
+        BaseRecyclerAdapter.setDefaultEmpty(AdapterEmpty(xText = "呵呵",xBg = Color.BLACK))
+//        val intent = Intent(this,Mult2Activity::class.java)
+//        startActivity(intent)
         normal.setOnClickListener {
-
+            val intent = Intent(this,NormalActivity::class.java)
+            startActivity(intent)
         }
 
         mult.setOnClickListener {

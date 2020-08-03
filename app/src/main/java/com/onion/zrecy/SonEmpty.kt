@@ -15,6 +15,10 @@ import com.onion.recy.recycler.BaseRecyclerAdapter
  */
 data class SonEmpty(var vTips: String): BaseObservable(),Empty{
 
+    override fun layout(): Int {
+        return R.layout.recy_empty_page1
+    }
+
     @Bindable
     var tips: String = vTips
         set(value) {
