@@ -26,11 +26,10 @@ class Mult2Activity: AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         recy.linear()
-            .setup {  }
-            .addEmpty(AdapterEmpty(xText = "哈哈"))
-        recy.baseAdapter.models = arrayListOf(
-
-        )
+            .setup {
+                addEmpty()
+            }
+        recy.baseAdapter.models = arrayListOf()
 
 
 
