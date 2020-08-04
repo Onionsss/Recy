@@ -59,7 +59,7 @@ class BaseRecyclerAdapter(recyclerView: RecyclerView) :
     }
 
     inline fun <reified E : Empty> customEmpty(cEmpty: E, layout: Int = 0) {
-        if(layout != 0 ){
+        if(layout == 0 ){
             addType<E>(cEmpty.layout())
         }else{
             addType<E>(layout)
@@ -761,5 +761,6 @@ class BaseRecyclerAdapter(recyclerView: RecyclerView) :
         fun setDefaultEmpty(empty: AdapterEmpty){
             sAdapterEmpty = empty
         }
+
     }
 }

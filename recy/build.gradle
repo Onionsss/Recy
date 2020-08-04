@@ -49,7 +49,7 @@ publish {
     userOrg = 'zhang759308541'
     groupId = 'com.onion'
     artifactId = 'Recy'
-    publishVersion = '1.0.2'
+    publishVersion = '1.0.6'
     desc = 'recy base'
     website = 'https://github.com/Onionsss/Recy'
     // ./gradlew clean build bintrayUpload -PbintrayUser=zhang759308541 -PbintrayKey=ee2adda0de63bd4a097497905626a6123522d3eb -PdryRun=false

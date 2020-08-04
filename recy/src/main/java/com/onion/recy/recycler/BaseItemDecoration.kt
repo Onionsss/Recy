@@ -12,7 +12,7 @@ import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.onion.recy.base.Library
+import com.onion.recy.base.Recy
 
 /**
  * 用于创建分隔物的帮助类
@@ -52,14 +52,14 @@ private constructor(private val context: Context, orientation: Int) :
     }
 
     constructor(@DrawableRes drawableRes: Int) : this(
-        Library.app!!,
+        Recy.app!!,
         VERTICAL
     ) {
         setDrawable(drawableRes)
     }
 
     constructor(dividerDrawable: Drawable) : this(
-        Library.app!!,
+        Recy.app!!,
         VERTICAL
     ) {
         divider = dividerDrawable
