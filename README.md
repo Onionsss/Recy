@@ -6,8 +6,11 @@
 
 ## 依赖方式       
 ```
-implementation 'com.onion:Recy:1.0.1'
+implementation 'com.onion:Recy:1.0.4'
 ```
+## 1.0.5版本更新日志
+### 修改初始化 Library.init()变成Recy.init()
+
 ## 1.0.1版本更新日志
 ### 增加空布局配置,和自定义空布局
 #### 01 - 空布局,无数据展示页面,onReload为点击了系统空布局页面做出的操作
