@@ -20,7 +20,6 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://dl.bintray.com/zhang759308541/base' }
-
     }
 }
 
