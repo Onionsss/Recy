@@ -6,7 +6,7 @@
 
 ## 依赖方式       
 ```
-implementation 'com.onion:Recy:1.0.4'
+implementation 'com.onion:Recy:1.0.6'
 ```
 ## 1.0.5版本更新日志
 ### 修改初始化 Library.init()变成Recy.init()
