@@ -347,6 +347,7 @@ recy.baseAdapter.onClick(R.id.item_root,R.id.item_root2){
 recy.baseAdapter.onLongClick()
 recy.baseAdapter.addFastClickable(R.id.xxx) //500ms内在此点击无效
 ```
+```
 MIT License
 
 Copyright (c) [year] [fullname]
@@ -368,3 +369,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
