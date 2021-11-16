@@ -24,7 +24,7 @@ class Mult1Activity: AppCompatActivity() {
 
         recy.linear(orientation = RecyclerView.VERTICAL)
             .setup {
-                empty()
+                addEmpty()
                 addType<User>( R.layout.activity_main)
             }.onBind {
                 // todo

@@ -26,7 +26,7 @@ object BindAdapter {
 
     @BindingAdapter("app:bgColor")
     @JvmStatic fun bgColor(view: View, res: Int) {
-        view.setBackgroundColor(view.context.resources.getColor(res))
+        view.setBackgroundColor(res)
     }
 
     @BindingAdapter("app:textColor")
