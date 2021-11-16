@@ -2,7 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.novoda.bintray-release'//添加
 
 
 android {
@@ -24,12 +23,12 @@ android {
         }
     }
 
-    dataBinding {
-        enabled = true
+    buildFeatures {
+        dataBinding = true
     }
     compileOptions {
-        sourceCompatibility = '1.8'
-        targetCompatibility = '1.8'
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     lintOptions {
         abortOnError false
@@ -44,13 +43,13 @@ dependencies {
     //network
 }
 
-publish {
-    repoName = 'base'
-    userOrg = 'zhang759308541'
-    groupId = 'com.onion'
-    artifactId = 'Recy'
-    publishVersion = '1.0.6'
-    desc = 'recy base'
-    website = 'https://github.com/Onionsss/Recy'
-    // ./gradlew clean build bintrayUpload -PbintrayUser=zhang759308541 -PbintrayKey=ee2adda0de63bd4a097497905626a6123522d3eb -PdryRun=false
-}
+//publish {
+//    repoName = 'base'
+//    userOrg = 'zhang759308541'
+//    groupId = 'com.onion'
+//    artifactId = 'Recy'
+//    publishVersion = '1.0.6'
+//    desc = 'recy base'
+//    website = 'https://github.com/Onionsss/Recy'
+//    // ./gradlew clean build bintrayUpload -PbintrayUser=zhang759308541 -PbintrayKey=ee2adda0de63bd4a097497905626a6123522d3eb -PdryRun=false
+//}
